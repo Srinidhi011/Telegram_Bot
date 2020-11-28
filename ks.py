@@ -11,12 +11,6 @@ def send_value(value):
 
 from telegram.ext import Updater,CommandHandler,MessageHandler,Filters
 import requests
-import logging
-
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)
-
-logger = logging.getLogger(__name__)
 
 def start(update, bot):
   update.message.reply_text("/Turnon : To turn on the light /Turnoff : To turn off the light")
@@ -43,7 +37,7 @@ def input_message(update, bot):
     update.message.reply_text("Light turned off,value=0 sent to adafruit_io feed")
     bot.send_photo( chat_id = update.message.chat_id, photo='https://i.dlpng.com/static/png/7501809_preview.png')
 
-u = Updater(TOKEN)
+u = Updater(TOKEN,use_bot=True)
 dp = u.dispatcher
 dp.add_handler(CommandHandler('start',start))
 dp.add_handler(CommandHandler('Turnoff',Turnoff))
