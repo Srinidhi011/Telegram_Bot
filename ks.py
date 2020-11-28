@@ -1,6 +1,6 @@
 from Adafruit_IO import Client, Feed , Data
-x = "sri_nidhi"
-y = "aio_yfye68ZoUU2IPg2DbC2WgKrVqsU6"
+x = ""
+y = ""
 aio = Client(x,y)
 
 def send_value(value):
@@ -41,7 +41,7 @@ def input_message(update, bot):
     update.message.reply_text("Light turned off,value=0 sent to adafruit_io feed")
     bot.send_photo( chat_id = update.message.chat_id, photo'https://i.dlpng.com/static/png/7501809_preview.png')
 
-u = Updater('1435528708:AAHvEFNSBpD91-RkGaHJBgYolZkW0E5mbhE')
+u = Updater('')
 dp = u.dispatcher
 dp.add_handler(CommandHandler('start',start))
 dp.add_handler(CommandHandler('Turnoff',Turnoff))
