@@ -12,15 +12,18 @@ def send_value(value):
 from telegram.ext import Updater,CommandHandler,MessageHandler,Filters
 
 def start(update, context):
-  update.reply_text("/Turnon : To turn on the light /Turnoff : To turn off the light")
-
+  start_message='''
+  /Turnoff or 'Turn off':To turn off the light 
+  /Turnon or 'Turn on'  :To turn on the light 
+  '''
+  context.bot.send_message(chat_id=update.effective_chat.id, text=start_message)
 def Turnon(update, context):
-  context.bot.send_message(chat_id=update.effective_chat.id, text="Light turned on")
+  context.bot.send_message(chat_id=update.effective_chat.id, text="Light turned on, value sent to adafruit-io feed")
   context.bot.send_photo(chat_id=update.effective_chat.id,photo='https://i.dlpng.com/static/png/507790_preview.png')
   send_value(1)
 
 def Turnoff(update, context):
-  context.bot.send_message(chat_id=update.effective_chat.id, text="Light turned off")
+  context.bot.send_message(chat_id=update.effective_chat.id, text="Light turned, value sent to adafruit-io feed")
   context.bot.send_photo(chat_id=update.effective_chat.id,photo='https://i.dlpng.com/static/png/7501809_preview.png')
   send_value(0)
 
