@@ -33,8 +33,8 @@ def input_message(update, context):
     context.bot.send_photo(chat_id=update.effective_chat.id,photo='https://i.dlpng.com/static/png/507790_preview.png')
   elif text == 'Turnoff':
     send_value(0)
-   context.bot.send_message(chat_id=update.effective_chat.id, text="Light turned off")
-   context.bot.send_photo(chat_id=update.effective_chat.id,photo='https://i.dlpng.com/static/png/7501809_preview.png')
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Light turned off")
+    context.bot.send_photo(chat_id=update.effective_chat.id,photo='https://i.dlpng.com/static/png/7501809_preview.png')
 u = Updater(TOKEN,use_context=True)
 dp = u.dispatcher
 dp.add_handler(CommandHandler('start',start))
