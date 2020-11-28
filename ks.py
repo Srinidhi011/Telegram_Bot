@@ -10,34 +10,32 @@ def send_value(value):
     aio.send_data(feed.key,value)
 
 from telegram.ext import Updater,CommandHandler,MessageHandler,Filters
-import requests
 
-def start(update, bot):
+def start(update, context):
   update.reply_text("/Turnon : To turn on the light /Turnoff : To turn off the light")
 
-def Turnon(update, bot):
-  update.reply_text("Light turned on,value=1 sent to adafruit_io feed")
-  bot.send_photo( chat_id = update.message.chat_id,photo = 'https://i.dlpng.com/static/png/507790_preview.png')
+def Turnon(update, context):
+  context.bot.send_message(chat_id=update.effective_chat.id, text="Light turned on")
+  context.bot.send_photo(chat_id=update.effective_chat.id,photo='https://i.dlpng.com/static/png/507790_preview.png')
   send_value(1)
 
-def Turnoff(update, bot):
-  update.reply_text("Light turned off ,value=0 sent to adafruit_io feed")
-  bot.send_photo(chat_id = update.message.chat_id, photo='https://i.dlpng.com/static/png/7501809_preview.png')
+def Turnoff(update, context):
+  context.bot.send_message(chat_id=update.effective_chat.id, text="Light turned off")
+  context.bot.send_photo(chat_id=update.effective_chat.id,photo='https://i.dlpng.com/static/png/7501809_preview.png')
   send_value(0)
 
-def input_message(update, bot):
+def input_message(update, context):
   text=update.message.text.upper()
   text=update.message.text
   if text == 'Turnon':
     send_value(1)
-    update.reply_text("Light turned on,value=1 sent to adafruit_io feed")
-    bot.send_photo( chat_id = update.message.chat_id,photo ='https://i.dlpng.com/static/png/507790_preview.png')
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Light turned on")
+    context.bot.send_photo(chat_id=update.effective_chat.id,photo='https://i.dlpng.com/static/png/507790_preview.png')
   elif text == 'Turnoff':
     send_value(0)
-    update.reply_text("Light turned off,value=0 sent to adafruit_io feed")
-    bot.send_photo( chat_id = update.message.chat_id, photo='https://i.dlpng.com/static/png/7501809_preview.png')
-
-u = Updater(TOKEN)
+   context.bot.send_message(chat_id=update.effective_chat.id, text="Light turned off")
+   context.bot.send_photo(chat_id=update.effective_chat.id,photo='https://i.dlpng.com/static/png/7501809_preview.png')
+u = Updater(TOKEN,use_context=True)
 dp = u.dispatcher
 dp.add_handler(CommandHandler('start',start))
 dp.add_handler(CommandHandler('Turnoff',Turnoff))
