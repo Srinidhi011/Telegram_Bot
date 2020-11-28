@@ -41,7 +41,7 @@ def input_message(update, bot):
   elif text == 'Turnoff':
     send_value(0)
     update.message.reply_text("Light turned off,value=0 sent to adafruit_io feed")
-    bot.send_photo( chat_id = update.message.chat_id, photo'https://i.dlpng.com/static/png/7501809_preview.png')
+    bot.send_photo( chat_id = update.message.chat_id, photo='https://i.dlpng.com/static/png/7501809_preview.png')
 
 u = Updater('TOKEN')
 dp = u.dispatcher
