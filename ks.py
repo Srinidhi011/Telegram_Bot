@@ -3,7 +3,7 @@ import os
 ADAFRUIT_IO_USERNAME = os.getenv('ADAFRUIT_IO_USERNAME')
 ADAFRUIT_IO_KEY = os.getenv('ADAFRUIT_IO_KEY')
 TOKEN = os.getenv('TOKEN')
-aio = Client(x,y)
+aio = Client(ADAFRUIT_IO_USERNAME,ADAFRUIT_IO_KEY)
 
 def send_value(value):
     feed = aio.feeds('tgbot')
