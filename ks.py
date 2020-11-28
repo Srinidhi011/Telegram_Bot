@@ -38,12 +38,12 @@ def input_message(update, context):
     send_value(0)
     context.bot.send_message(chat_id=update.effective_chat.id, text="Light turned off")
     context.bot.send_photo(chat_id=update.effective_chat.id,photo='https://i.dlpng.com/static/png/7501809_preview.png')
-u =Updater(TOKEN,use_context=True)
-dp = updater.dispatcher
-dp.add_handler(CommandHandler('turnoff',Turnoff))
-dp.add_handler(CommandHandler('turnon',Turnon))
-dp.add_handler(CommandHandler('start',start))
-dp.add_handler(MessageHandler(Filters.text & (~Filters.command),input_message))
-u.start_polling()
-u.idle()
+updater =Updater(TOKEN,use_context=True)
+dispatcher = updater.dispatcher
+dispatcher.add_handler(CommandHandler('turnoff',Turnoff))
+dispatcher.add_handler(CommandHandler('turnon',Turnon))
+dispatcher.add_handler(CommandHandler('start',start))
+dispatcher.add_handler(MessageHandler(Filters.text & (~Filters.command),input_message))
+updater.start_polling()
+updater.idle()
  
